@@ -6,31 +6,58 @@ import (
 
 type Card struct {
 	rank int
-	suit string
+	suit int
 }
 
-var ranks = map[string]int{
-	"2": 2,
-	"3": 3,
-	"4": 4,
-	"5": 5,
-	"6": 6,
-	"7": 7,
-	"8": 8,
-	"9": 9,
-	"T": 10,
-	"J": 11,
-	"Q": 12,
-	"K": 13,
-	"A": 14,
-}
+// Cards
+const (
+	Two = iota + 2
+	Three
+	Four
+	Five
+	Six
+	Seven
+	Eight
+	Nine
+	Ten
+	Jack
+	Queen
+	King
+	Ace
+)
 
-var suits = map[string]string{
-	"C": "clubs",
-	"D": "diamonds",
-	"H": "hearts",
-	"S": "spades",
-}
+// Suits
+const (
+	Clubs = iota
+	Diamonds
+	Hearts
+	Spades
+)
+
+var (
+	ranks = map[string]int{
+		"2": Two,
+		"3": Three,
+		"4": Four,
+		"5": Five,
+		"6": Six,
+		"7": Seven,
+		"8": Eight,
+		"9": Nine,
+		"T": Ten,
+		"J": Jack,
+		"Q": Queen,
+		"K": King,
+		"A": Ace,
+	}
+
+	suits = map[string]int{
+		"C": Clubs,
+		"D": Diamonds,
+		"H": Hearts,
+		"S": Spades,
+	}
+)
 
 // NewCardFromCode creates new card instance from string short code like: 2C, TS, KH
 func NewCard(code string) Card {
@@ -43,7 +70,7 @@ func (c Card) Rank() int {
 	return c.rank
 }
 
-func (c Card) Suit() string {
+func (c Card) Suit() int {
 	return c.suit
 }
 
@@ -52,9 +79,9 @@ type byRank []Card
 
 func (a byRank) Len() int           { return len(a) }
 func (a byRank) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a byRank) Less(i, j int) bool { return a[i].Rank() < a[j].Rank() }
+func (a byRank) Less(i, j int) bool { return a[i].Rank() > a[j].Rank() }
 
-// Sort cards by rank and returns new sorted array
+// Sort cards by rank desc and returns new sorted array
 func Sort(cards []Card) {
 	sort.Sort(byRank(cards))
 }

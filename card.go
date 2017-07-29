@@ -74,14 +74,14 @@ func (c Card) Suit() int {
 	return c.suit
 }
 
-// byCard impements sort interface
-type byRank []Card
+// byCardDesc impements sort interface
+type byRankDesc []Card
 
-func (a byRank) Len() int           { return len(a) }
-func (a byRank) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
-func (a byRank) Less(i, j int) bool { return a[i].Rank() > a[j].Rank() }
+func (a byRankDesc) Len() int           { return len(a) }
+func (a byRankDesc) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
+func (a byRankDesc) Less(i, j int) bool { return a[i].Rank() > a[j].Rank() }
 
 // Sort cards by rank desc and returns new sorted array
 func Sort(cards []Card) {
-	sort.Sort(byRank(cards))
+	sort.Sort(byRankDesc(cards))
 }

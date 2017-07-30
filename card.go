@@ -28,7 +28,7 @@ const (
 
 // Suits
 const (
-	Clubs = iota
+	Clubs = iota + 1
 	Diamonds
 	Hearts
 	Spades
@@ -59,7 +59,7 @@ var (
 	}
 )
 
-// NewCardFromCode creates new card instance from string short code like: 2C, TS, KH
+// NewCard creates new card instance from string short code like: 2C, TS, KH
 func NewCard(code string) Card {
 	rank := ranks[string(code[0])]
 	suit := suits[string(code[1])]

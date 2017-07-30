@@ -5,7 +5,6 @@ import (
 )
 
 func TestStraightFlushSuccess(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("QC"),
 		NewCard("KC"),
@@ -22,7 +21,6 @@ func TestStraightFlushSuccess(t *testing.T) {
 }
 
 func TestStraightFlushSuccess2(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("JS"),
 		NewCard("9S"),
@@ -39,7 +37,6 @@ func TestStraightFlushSuccess2(t *testing.T) {
 }
 
 func TestStraightFlushFail(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("JS"),
 		NewCard("TS"),
@@ -56,7 +53,6 @@ func TestStraightFlushFail(t *testing.T) {
 }
 
 func TestStraightSuccess(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("JS"),
 		NewCard("TD"),
@@ -73,7 +69,6 @@ func TestStraightSuccess(t *testing.T) {
 }
 
 func TestStraightFail(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("JS"),
 		NewCard("TD"),
@@ -90,7 +85,6 @@ func TestStraightFail(t *testing.T) {
 }
 
 func TestFullHouse(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("KC"),
 		NewCard("KD"),
@@ -107,7 +101,6 @@ func TestFullHouse(t *testing.T) {
 }
 
 func TestFourOfAKind(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("5C"),
 		NewCard("5D"),
@@ -124,7 +117,6 @@ func TestFourOfAKind(t *testing.T) {
 }
 
 func TestThreeOfAKind(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("5C"),
 		NewCard("5D"),
@@ -141,7 +133,6 @@ func TestThreeOfAKind(t *testing.T) {
 }
 
 func TestTwoPair(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("5C"),
 		NewCard("5D"),
@@ -158,7 +149,6 @@ func TestTwoPair(t *testing.T) {
 }
 
 func TestOnePair(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("5C"),
 		NewCard("5D"),
@@ -175,7 +165,6 @@ func TestOnePair(t *testing.T) {
 }
 
 func TestPairsHash(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("QS"),
 		NewCard("QD"),
@@ -194,7 +183,6 @@ func TestPairsHash(t *testing.T) {
 }
 
 func TestPairsHashFail(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("QS"),
 		NewCard("KD"),
@@ -210,7 +198,6 @@ func TestPairsHashFail(t *testing.T) {
 }
 
 func TestEvaluateStraightFlush(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("KC"),
 		NewCard("QC"),
@@ -226,7 +213,6 @@ func TestEvaluateStraightFlush(t *testing.T) {
 }
 
 func TestEvaluateFourOfAKind(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("KC"),
 		NewCard("KD"),
@@ -242,7 +228,6 @@ func TestEvaluateFourOfAKind(t *testing.T) {
 }
 
 func TestEvaluateFullHouse(t *testing.T) {
-	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("3C"),
 		NewCard("3D"),

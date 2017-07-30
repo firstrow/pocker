@@ -74,6 +74,15 @@ func (c Card) Suit() int {
 	return c.suit
 }
 
+// CodesToCards creates array of Cards from array of string codes
+func CodesToCards(codes []string) []Card {
+	var cards []Card
+	for _, v := range codes {
+		cards = append(cards, NewCard(v))
+	}
+	return cards
+}
+
 // byCardDesc impements sort interface
 type byRankDesc []Card
 

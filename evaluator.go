@@ -1,6 +1,8 @@
 package pocker
 
-import ()
+import (
+	"fmt"
+)
 
 type Hand int
 type Evaluator func([]Card) Hand
@@ -16,6 +18,29 @@ const (
 	FourOfAKind
 	StraightFlush
 )
+
+func (h Hand) ToString() string {
+	switch h {
+	case 8:
+		return "straight-flush"
+	case 7:
+		return "four-of-a-kind"
+	case 6:
+		return "full-house"
+	case 5:
+		return "flush"
+	case 4:
+		return "straight"
+	case 3:
+		return "three-of-a-kind"
+	case 2:
+		return "two-pairs"
+	case 1:
+		return "one-pair"
+	default:
+		return "highest-card"
+	}
+}
 
 // pairsHash is a hash table which keys is card rank
 // and value is number of occurences in hand.
@@ -144,6 +169,36 @@ func Evaluate(cards []Card) Hand {
 		if h > best {
 			best = h
 		}
+	}
+
+	return best
+}
+
+// BestHand returns best possible hand in 5 card pocker game
+func BestHand(hand []string, deck []string) Hand {
+	var best Hand
+
+	for i := 0; i < 5; i++ {
+		for i2 := i; i2 < 5; i2++ {
+			var r []string
+			a := hand[i : i2+1]
+			b := deck[0 : 5-len(a)]
+			r = append(r, a...)
+			r = append(r, b...)
+			fmt.Println(r)
+			cards := CodesToCards(r)
+
+			h := Evaluate(cards)
+			if h > best {
+				best = h
+			}
+		}
+	}
+
+	// Also, evaluate deck itself
+	h := Evaluate(CodesToCards(deck))
+	if h > best {
+		best = h
 	}
 
 	return best

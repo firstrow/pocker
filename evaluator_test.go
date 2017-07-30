@@ -256,3 +256,23 @@ func TestEvaluateFullHouse(t *testing.T) {
 		t.Error("FullHouse was expected")
 	}
 }
+
+func TestBestHandStraightFlush(t *testing.T) {
+	hand := []string{"TH", "JH", "QC", "QD", "QS"}
+	deck := []string{"QH", "KH", "AH", "2S", "6S"}
+
+	r := BestHand(hand, deck)
+	if r != StraightFlush {
+		t.Errorf("StraightFlush expected. Got %s", r.ToString())
+	}
+}
+
+func TestBestHandStraight(t *testing.T) {
+	hand := []string{"AC", "2D", "9C", "3S", "KD"}
+	deck := []string{"5S", "4D", "KS", "AS", "4C"}
+
+	r := BestHand(hand, deck)
+	if r != Straight {
+		t.Errorf("Straight expected. Got %s", r.ToString())
+	}
+}

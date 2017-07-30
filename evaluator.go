@@ -46,15 +46,10 @@ func newPairsHash(c []Card) pairsHash {
 
 // Five cards of sequential rank and the same suit.
 func StraightFlushEva(c []Card) Hand {
-	if FlushEva(c) != Flush {
-		return NoHand
+	if FlushEva(c) == Flush && StraightEva(c) == Straight {
+		return StraightFlush
 	}
-
-	if StraightEva(c) != Straight {
-		return NoHand
-	}
-
-	return StraightFlush
+	return NoHand
 }
 
 func FlushEva(c []Card) Hand {

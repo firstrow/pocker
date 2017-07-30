@@ -88,8 +88,12 @@ func FullHouseEva(c []Card) Hand {
 }
 
 func StraightEva(c []Card) Hand {
+	sorted := make([]Card, len(c))
+	copy(sorted, c)
+	Sort(sorted)
+
 	for i := 0; i < 4; i++ {
-		if c[i+1].Rank() != c[i].Rank()-1 {
+		if sorted[i+1].Rank() != sorted[i].Rank()-1 {
 			return NoHand
 		}
 	}

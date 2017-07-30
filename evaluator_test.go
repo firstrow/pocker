@@ -7,13 +7,12 @@ import (
 func TestStraightFlushSuccess(t *testing.T) {
 	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
-		NewCard("KC"),
 		NewCard("QC"),
+		NewCard("KC"),
 		NewCard("JC"),
 		NewCard("TC"),
 		NewCard("9C"),
 	}
-	Sort(cards)
 
 	r := StraightFlushEva(cards)
 
@@ -26,12 +25,11 @@ func TestStraightFlushSuccess2(t *testing.T) {
 	// TODO: Move cards creation and sort to reusable metod
 	cards := []Card{
 		NewCard("JS"),
-		NewCard("TS"),
 		NewCard("9S"),
+		NewCard("TS"),
 		NewCard("8S"),
 		NewCard("7S"),
 	}
-	Sort(cards)
 
 	r := StraightFlushEva(cards)
 
@@ -49,7 +47,6 @@ func TestStraightFlushFail(t *testing.T) {
 		NewCard("6S"),
 		NewCard("7C"),
 	}
-	Sort(cards)
 
 	r := StraightFlushEva(cards)
 
@@ -63,11 +60,10 @@ func TestStraightSuccess(t *testing.T) {
 	cards := []Card{
 		NewCard("JS"),
 		NewCard("TD"),
-		NewCard("9S"),
 		NewCard("8S"),
 		NewCard("7C"),
+		NewCard("9S"),
 	}
-	Sort(cards)
 
 	r := StraightEva(cards)
 
@@ -85,7 +81,6 @@ func TestStraightFail(t *testing.T) {
 		NewCard("8S"),
 		NewCard("7C"),
 	}
-	Sort(cards)
 
 	r := StraightEva(cards)
 
@@ -103,7 +98,6 @@ func TestFullHouse(t *testing.T) {
 		NewCard("QS"),
 		NewCard("QC"),
 	}
-	Sort(cards)
 
 	r := FullHouseEva(cards)
 
@@ -121,7 +115,6 @@ func TestFourOfAKind(t *testing.T) {
 		NewCard("5S"),
 		NewCard("QC"),
 	}
-	Sort(cards)
 
 	r := FourOfAKindEva(cards)
 
@@ -139,7 +132,6 @@ func TestThreeOfAKind(t *testing.T) {
 		NewCard("KS"),
 		NewCard("QC"),
 	}
-	Sort(cards)
 
 	r := ThreeOfAKindEva(cards)
 
@@ -157,7 +149,6 @@ func TestTwoPair(t *testing.T) {
 		NewCard("6S"),
 		NewCard("QC"),
 	}
-	Sort(cards)
 
 	r := TwoPairEva(cards)
 
@@ -175,7 +166,6 @@ func TestOnePair(t *testing.T) {
 		NewCard("4S"),
 		NewCard("QC"),
 	}
-	Sort(cards)
 
 	r := OnePairEva(cards)
 
@@ -193,7 +183,6 @@ func TestPairsHash(t *testing.T) {
 		NewCard("8S"),
 		NewCard("8C"),
 	}
-	Sort(cards)
 
 	pairs := newPairsHash(cards)
 	if pairs.hasPairs(2, 1) == false {
@@ -213,7 +202,6 @@ func TestPairsHashFail(t *testing.T) {
 		NewCard("2S"),
 		NewCard("5C"),
 	}
-	Sort(cards)
 
 	pairs := newPairsHash(cards)
 	if pairs.hasPairs(2, 1) == true {
@@ -230,7 +218,6 @@ func TestEvaluateStraightFlush(t *testing.T) {
 		NewCard("TC"),
 		NewCard("9C"),
 	}
-	Sort(cards)
 
 	hand := Evaluate(cards)
 	if hand != StraightFlush {
@@ -247,7 +234,6 @@ func TestEvaluateFourOfAKind(t *testing.T) {
 		NewCard("KH"),
 		NewCard("9C"),
 	}
-	Sort(cards)
 
 	hand := Evaluate(cards)
 	if hand != FourOfAKind {
@@ -264,7 +250,6 @@ func TestEvaluateFullHouse(t *testing.T) {
 		NewCard("9H"),
 		NewCard("9C"),
 	}
-	Sort(cards)
 
 	hand := Evaluate(cards)
 	if hand != FullHouse {

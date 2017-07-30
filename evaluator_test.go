@@ -220,3 +220,54 @@ func TestPairsHashFail(t *testing.T) {
 		t.Error("No pairs was expected")
 	}
 }
+
+func TestEvaluateStraightFlush(t *testing.T) {
+	// TODO: Move cards creation and sort to reusable metod
+	cards := []Card{
+		NewCard("KC"),
+		NewCard("QC"),
+		NewCard("JC"),
+		NewCard("TC"),
+		NewCard("9C"),
+	}
+	Sort(cards)
+
+	hand := Evaluate(cards)
+	if hand != StraightFlush {
+		t.Error("StraightFlush was expected")
+	}
+}
+
+func TestEvaluateFourOfAKind(t *testing.T) {
+	// TODO: Move cards creation and sort to reusable metod
+	cards := []Card{
+		NewCard("KC"),
+		NewCard("KD"),
+		NewCard("KS"),
+		NewCard("KH"),
+		NewCard("9C"),
+	}
+	Sort(cards)
+
+	hand := Evaluate(cards)
+	if hand != FourOfAKind {
+		t.Error("StraightFlush was expected")
+	}
+}
+
+func TestEvaluateFullHouse(t *testing.T) {
+	// TODO: Move cards creation and sort to reusable metod
+	cards := []Card{
+		NewCard("3C"),
+		NewCard("3D"),
+		NewCard("3S"),
+		NewCard("9H"),
+		NewCard("9C"),
+	}
+	Sort(cards)
+
+	hand := Evaluate(cards)
+	if hand != FullHouse {
+		t.Error("FullHouse was expected")
+	}
+}

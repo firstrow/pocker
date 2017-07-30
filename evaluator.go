@@ -1,5 +1,7 @@
 package pocker
 
+import ()
+
 type Hand int
 type Evaluator func([]Card) Hand
 
@@ -126,12 +128,19 @@ var evaluators = []Evaluator{
 	NoHandEva,
 }
 
-// Evaluate takes array of 5 cards and returns best possible hand.
+// Evaluate takes array of N cards and returns best possible hand.
 func Evaluate(cards []Card) Hand {
-	var r = make([]Hand, 5)
+	var hands = make([]Hand, len(cards))
 	for _, f := range evaluators {
-		r = append(r, f(cards))
+		hands = append(hands, f(cards))
 	}
-	// TODO: sort r and return highest
-	return 1
+
+	var best Hand
+	for _, h := range hands {
+		if h > best {
+			best = h
+		}
+	}
+
+	return best
 }

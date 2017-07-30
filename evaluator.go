@@ -130,7 +130,7 @@ var evaluators = []Evaluator{
 
 // Evaluate takes array of N cards and returns best possible hand.
 func Evaluate(cards []Card) Hand {
-	var hands = make([]Hand, len(cards))
+	var hands []Hand
 	for _, f := range evaluators {
 		hands = append(hands, f(cards))
 	}

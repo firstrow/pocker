@@ -5,7 +5,7 @@
 ## Installation
 
 ```
-go get -u github.com/firstrow/pocker
+go get -u github.com/firstrow/pocker/cmd/pocker
 ```
 
 

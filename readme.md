@@ -16,8 +16,7 @@ To process many hands and decks cli application can be used.
 pocker ~/input.txt
 ```
 
-See `data/input.txt` for example input file.
-
+See [data/input.txt](https://github.com/firstrow/pocker/tree/master/data/input.txt) for example input file.
 
 Also, `pocker` library can be used in your golang project:
 

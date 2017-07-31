@@ -14,14 +14,7 @@ func TestStraightFlushSuccess(t *testing.T) {
 }
 
 func TestStraightFlushSuccess2(t *testing.T) {
-	cards := []Card{
-		NewCard("JS"),
-		NewCard("9S"),
-		NewCard("TS"),
-		NewCard("8S"),
-		NewCard("7S"),
-	}
-
+	cards := CodesToCards([]string{"JS", "9S", "TS", "8S", "7S"})
 	r := StraightFlushEva(cards)
 
 	if r != StraightFlush {
@@ -30,13 +23,7 @@ func TestStraightFlushSuccess2(t *testing.T) {
 }
 
 func TestStraightFlushFail(t *testing.T) {
-	cards := []Card{
-		NewCard("JS"),
-		NewCard("TS"),
-		NewCard("9S"),
-		NewCard("6S"),
-		NewCard("7C"),
-	}
+	cards := CodesToCards([]string{"JS", "TS", "9S", "6S", "7C"})
 
 	r := StraightFlushEva(cards)
 
@@ -46,13 +33,7 @@ func TestStraightFlushFail(t *testing.T) {
 }
 
 func TestStraightSuccess(t *testing.T) {
-	cards := []Card{
-		NewCard("JS"),
-		NewCard("TD"),
-		NewCard("8S"),
-		NewCard("7C"),
-		NewCard("9S"),
-	}
+	cards := CodesToCards([]string{"JS", "TD", "8S", "7C", "9S"})
 
 	r := StraightEva(cards)
 
@@ -62,13 +43,7 @@ func TestStraightSuccess(t *testing.T) {
 }
 
 func TestStraightFail(t *testing.T) {
-	cards := []Card{
-		NewCard("JS"),
-		NewCard("TD"),
-		NewCard("QS"),
-		NewCard("8S"),
-		NewCard("7C"),
-	}
+	cards := CodesToCards([]string{"JS", "TD", "QS", "8S", "7C"})
 
 	r := StraightEva(cards)
 
@@ -78,13 +53,7 @@ func TestStraightFail(t *testing.T) {
 }
 
 func TestFullHouse(t *testing.T) {
-	cards := []Card{
-		NewCard("KC"),
-		NewCard("KD"),
-		NewCard("KH"),
-		NewCard("QS"),
-		NewCard("QC"),
-	}
+	cards := CodesToCards([]string{"KC", "KD", "KH", "QS", "QC"})
 
 	r := FullHouseEva(cards)
 
@@ -94,13 +63,7 @@ func TestFullHouse(t *testing.T) {
 }
 
 func TestFourOfAKind(t *testing.T) {
-	cards := []Card{
-		NewCard("5C"),
-		NewCard("5D"),
-		NewCard("5H"),
-		NewCard("5S"),
-		NewCard("QC"),
-	}
+	cards := CodesToCards([]string{"5C", "5D", "5H", "5S", "QC"})
 
 	r := FourOfAKindEva(cards)
 
@@ -110,13 +73,7 @@ func TestFourOfAKind(t *testing.T) {
 }
 
 func TestThreeOfAKind(t *testing.T) {
-	cards := []Card{
-		NewCard("5C"),
-		NewCard("5D"),
-		NewCard("5H"),
-		NewCard("KS"),
-		NewCard("QC"),
-	}
+	cards := CodesToCards([]string{"5C", "5D", "5H", "KS", "QC"})
 
 	r := ThreeOfAKindEva(cards)
 
@@ -126,13 +83,7 @@ func TestThreeOfAKind(t *testing.T) {
 }
 
 func TestTwoPair(t *testing.T) {
-	cards := []Card{
-		NewCard("5C"),
-		NewCard("5D"),
-		NewCard("6H"),
-		NewCard("6S"),
-		NewCard("QC"),
-	}
+	cards := CodesToCards([]string{"5C", "5D", "6H", "6S", "QC"})
 
 	r := TwoPairEva(cards)
 
@@ -142,13 +93,7 @@ func TestTwoPair(t *testing.T) {
 }
 
 func TestOnePair(t *testing.T) {
-	cards := []Card{
-		NewCard("5C"),
-		NewCard("5D"),
-		NewCard("3H"),
-		NewCard("4S"),
-		NewCard("QC"),
-	}
+	cards := CodesToCards([]string{"5C", "5D", "3H", "4S", "QC"})
 
 	r := OnePairEva(cards)
 
@@ -158,13 +103,7 @@ func TestOnePair(t *testing.T) {
 }
 
 func TestPairsHash(t *testing.T) {
-	cards := []Card{
-		NewCard("QS"),
-		NewCard("QD"),
-		NewCard("QC"),
-		NewCard("8S"),
-		NewCard("8C"),
-	}
+	cards := CodesToCards([]string{"QS", "QD", "QC", "8S", "8C"})
 
 	pairs := newPairsHash(cards)
 	if pairs.hasPairs(2, 1) == false {
@@ -176,13 +115,7 @@ func TestPairsHash(t *testing.T) {
 }
 
 func TestPairsHashFail(t *testing.T) {
-	cards := []Card{
-		NewCard("QS"),
-		NewCard("KD"),
-		NewCard("AC"),
-		NewCard("2S"),
-		NewCard("5C"),
-	}
+	cards := CodesToCards([]string{"QS", "KD", "AC", "2S", "5C"})
 
 	pairs := newPairsHash(cards)
 	if pairs.hasPairs(2, 1) == true {
@@ -191,13 +124,7 @@ func TestPairsHashFail(t *testing.T) {
 }
 
 func TestEvaluateStraightFlush(t *testing.T) {
-	cards := []Card{
-		NewCard("KC"),
-		NewCard("QC"),
-		NewCard("JC"),
-		NewCard("TC"),
-		NewCard("9C"),
-	}
+	cards := CodesToCards([]string{"KC", "QC", "JC", "TC", "9C"})
 
 	hand := Evaluate(cards)
 	if hand != StraightFlush {
@@ -206,13 +133,7 @@ func TestEvaluateStraightFlush(t *testing.T) {
 }
 
 func TestEvaluateFourOfAKind(t *testing.T) {
-	cards := []Card{
-		NewCard("KC"),
-		NewCard("KD"),
-		NewCard("KS"),
-		NewCard("KH"),
-		NewCard("9C"),
-	}
+	cards := CodesToCards([]string{"KC", "KD", "KS", "KH", "9C"})
 
 	hand := Evaluate(cards)
 	if hand != FourOfAKind {
@@ -221,13 +142,7 @@ func TestEvaluateFourOfAKind(t *testing.T) {
 }
 
 func TestEvaluateFullHouse(t *testing.T) {
-	cards := []Card{
-		NewCard("3C"),
-		NewCard("3D"),
-		NewCard("3S"),
-		NewCard("9H"),
-		NewCard("9C"),
-	}
+	cards := CodesToCards([]string{"3C", "3D", "3S", "9H", "9C"})
 
 	hand := Evaluate(cards)
 	if hand != FullHouse {
@@ -241,7 +156,7 @@ func TestBestHandStraightFlush(t *testing.T) {
 
 	r := BestHand(hand, deck)
 	if r != StraightFlush {
-		t.Errorf("StraightFlush expected. Got %s", r.ToString())
+		t.Errorf("StraightFlush expected. Got %s", r)
 	}
 }
 
@@ -251,6 +166,6 @@ func TestBestHandStraight(t *testing.T) {
 
 	r := BestHand(hand, deck)
 	if r != Straight {
-		t.Errorf("Straight expected. Got %s", r.ToString())
+		t.Errorf("Straight expected. Got %s", r)
 	}
 }

@@ -1,9 +1,5 @@
 package pocker
 
-import (
-	"fmt"
-)
-
 type Hand int
 type Evaluator func([]Card) Hand
 
@@ -179,15 +175,13 @@ func BestHand(hand []string, deck []string) Hand {
 	var best Hand
 
 	for i := 0; i < 5; i++ {
-		for i2 := i; i2 < 5; i2++ {
+		for j := i; j < 5; j++ {
 			var r []string
-			a := hand[i : i2+1]
+			a := hand[i : j+1]
 			b := deck[0 : 5-len(a)]
 			r = append(r, a...)
 			r = append(r, b...)
-			fmt.Println(r)
 			cards := CodesToCards(r)
-
 			h := Evaluate(cards)
 			if h > best {
 				best = h

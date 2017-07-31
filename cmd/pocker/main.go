@@ -29,12 +29,13 @@ func main() {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		arr := strings.Split(line, " ")
-		hand := arr[0:5]
-		deck := arr[5:10]
+		codes := strings.Split(line, " ")
+		hand := codes[0:5]
+		deck := codes[5:10]
 
-		result := pocker.BestHand(hand, deck)
-		fmt.Println(result.ToString())
+		best := pocker.BestHand(hand, deck)
+		// TODO: Format as in task examples
+		fmt.Println(best.ToString())
 	}
 
 	if err := scanner.Err(); err != nil {

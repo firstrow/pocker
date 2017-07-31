@@ -5,14 +5,7 @@ import (
 )
 
 func TestStraightFlushSuccess(t *testing.T) {
-	cards := []Card{
-		NewCard("QC"),
-		NewCard("KC"),
-		NewCard("JC"),
-		NewCard("TC"),
-		NewCard("9C"),
-	}
-
+	cards := CodesToCards([]string{"QC", "KC", "JC", "TC", "9C"})
 	r := StraightFlushEva(cards)
 
 	if r != StraightFlush {
@@ -253,7 +246,7 @@ func TestBestHandStraightFlush(t *testing.T) {
 }
 
 func TestBestHandStraight(t *testing.T) {
-	hand := []string{"AC", "2D", "9C", "3S", "KD"}
+	hand := []string{"AC", "2D", "6C", "3S", "KD"}
 	deck := []string{"5S", "4D", "KS", "AS", "4C"}
 
 	r := BestHand(hand, deck)

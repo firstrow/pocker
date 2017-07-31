@@ -90,7 +90,7 @@ func (a byRankDesc) Len() int           { return len(a) }
 func (a byRankDesc) Swap(i, j int)      { a[i], a[j] = a[j], a[i] }
 func (a byRankDesc) Less(i, j int) bool { return a[i].Rank() > a[j].Rank() }
 
-// Sort cards by rank desc and returns new sorted array
+// Sort cards by rank desc
 func Sort(cards []Card) {
 	sort.Sort(byRankDesc(cards))
 }

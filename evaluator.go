@@ -15,7 +15,7 @@ const (
 	StraightFlush
 )
 
-func (h Hand) ToString() string {
+func (h Hand) String() string {
 	switch h {
 	case 8:
 		return "straight-flush"

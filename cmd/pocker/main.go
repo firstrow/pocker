@@ -14,6 +14,14 @@ func init() {
 	flag.Parse()
 }
 
+func sliceToString(s []string) string {
+	return strings.Trim(fmt.Sprintf("%v", s), "[]")
+}
+
+func printLine(hand, deck []string, best pocker.Hand) {
+	fmt.Printf("Hand: %s Deck: %s Best hand: %s\n", sliceToString(hand), sliceToString(deck), best)
+}
+
 func main() {
 	if len(flag.Args()) == 0 {
 		log.Fatal("Please provide path to input file.")
@@ -34,8 +42,7 @@ func main() {
 		deck := codes[5:10]
 
 		best := pocker.BestHand(hand, deck)
-		// TODO: Format as in task examples
-		fmt.Println(best.ToString())
+		printLine(hand, deck, best)
 	}
 
 	if err := scanner.Err(); err != nil {
